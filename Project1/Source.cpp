@@ -1,41 +1,23 @@
-
-#include <SFML/Graphics.hpp>
+#include <iostream>
+#include "Game.h"
 
 
 int main()
 {
-	sf::RenderWindow window(sf::VideoMode(800, 800), "Test");
-	sf::Event e;
+	Game game;
 
 	int width = 800;
-	int height = 800;
+	int height = 600;
 
-	int x = 0;
+	
 
-	struct bar
+	while (game.IsRunning())
 	{
+		// Update
+		game.Update();
 
-	};
-
-	while (window.isOpen())
-	{
-		// Event Handling
-		while (window.pollEvent(e))
-		{
-			if (e.type == sf::Event::Closed)
-				window.close();
-		}
-
-		// Drawing
-		window.clear(sf::Color::Black);
-		sf::RectangleShape bar(sf::Vector2f(50.f, 100.f));
-		bar.setPosition(x, height / 2);
-
-		x += 1;
-
-		// Displaying
-		window.draw(bar);
-		window.display();
+		// Render
+		game.Render();
 	}
 
 	return 0;
